@@ -1,50 +1,48 @@
 #include <stdio.h>
-#include <unistd.h>
 
 /**
- * main - main block
- * prints all possible combination of 2-digit numbers
- * The numbers should range from 0 to 99
- * The two numbers should be separated by a space
- * All numbers should be printed with 2 digits.
- * 1 should be printed as 01
- * The combinations of numbers should be printed in ascending order
- * Return: 0
+ * main - Prints numbers between 00 to 99.
+ *
+ * Return: Always 0 (Success)
  */
 int main(void)
 {
-	int c, i, k, j;
+int i, e, g, h, op1, op2;
 
-	for (c = 48; c <= 57; c++)
+i = e = g = h = 48;
+while (h < 58)
+{
+	g = 48;
+	while (g < 58)
 	{
-		for (i = 48; i <= 57; i++)
+		e = 48;
+		while (e < 58)
 		{
-			for (k = 48; k <= 57; k++)
+			i = 48;
+			while (i < 58)
 			{
-				for (j = 48; j <= 57; j++)
+				op1 = (h * 10) + g;
+				op2 = (e * 10) + i;
+				if (op1 < op2)
 				{
-					if (((k + j) > (c + i) &&  k >= c) || c < k)
-					{
-						putchar(c);
-						putchar(i);
-						putchar(' ');
-						putchar(k);
-						putchar(j);
-
-						if (c + i + k + j == 227 && c == 57)
-						{
+					putchar(h);
+					putchar(g);
+					putchar(' ');
+					putchar(e);
+					putchar(i);
+					if (h == 57 && g == 56 && e == 57 && i == 57)
 						break;
-						}
-						else
-						{
-						putchar(',');
-						putchar(' ');
-						}
-					}
-					}
+					putchar(',');
+					putchar(' ');
+				}
+				i++;
 			}
+			e++;
 		}
+		g++;
 	}
-	putchar('\n');
-	return (0);
+	h++;
+}
+putchar('\n');
+return (0);
 }
